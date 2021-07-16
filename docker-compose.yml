@@ -1,0 +1,25 @@
+version: '3.7'
+
+services: 
+  front:
+    container_name: front
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    volumes:
+      - './front:/usr/src/app/front'
+      - '/usr/src/app/front/node_modules'
+    ports:
+      - '3000:3000'
+    stdin_open: true
+  back:
+    container_name: back
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    volumes:
+      - './back:/usr/src/app/back'
+      - '/usr/src/app/back/node_modules'
+    ports:
+      - '3001:3001'
+    stdin_open: true
